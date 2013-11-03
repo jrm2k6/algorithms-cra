@@ -5,19 +5,33 @@ import java.util.List;
 
 public class RootSearchTrieNode extends AbstractSearchTrieNode {
 	public RootSearchTrieNode() {
-		super(null);
+		super(null, 0);
 	}
 
 
 	@Override
+	public void print() {
+		for (AbstractSearchTrieNode n : children) {
+			n.print();
+		}
+	}
+
+	@Override
 	public void insert(String word) {
-		char[] chars = word.toCharArray();
+		if (word.length() == 0) {
+			return;
+		}
 
 		if (hasChildren()) {
-
-		} else {
-
+			AbstractSearchTrieNode node = findChar(word.charAt(0));
+			if (node != null) {
+				node.insert(word);
+				return;
+			}
 		}
+		SearchTrieNode child = new SearchTrieNode(word.substring(0, 1), 1);
+		children.add(child);
+		child.insert(word);
 	}
 
 	public AbstractSearchTrieNode findChar(char c) {
@@ -28,7 +42,6 @@ public class RootSearchTrieNode extends AbstractSearchTrieNode {
 				return current;
 			}
 		}
-
 		return null;
 	}
 
