@@ -16,6 +16,23 @@ public class SearchTrieTest {
 		trie = new RootSearchTrieNode();
 	}
 
+	public void createTestTrie() {
+		trie.insert("col");
+		trie.insert("column");
+		trie.insert("dog");
+		trie.insert("california");
+		trie.insert("calife");
+		trie.insert("crane");
+		trie.insert("bridge");
+		trie.insert("amateur");
+		trie.insert("bride");
+		trie.insert("amore");
+		trie.insert("abort");
+		trie.insert("sk");
+		trie.insert("sqlite");
+		trie.insert("skull");
+	}
+
 	@Test
 	public void testAddEmptyWord() {
 		trie.insert("");
@@ -56,17 +73,39 @@ public class SearchTrieTest {
 		trie.insert("column");
 		trie.insert("dog");
 		trie.insert("california");
+		trie.insert("calife");
+		trie.insert("crane");
 		trie.insert("bridge");
 		trie.insert("amateur");
 		trie.insert("bride");
 		trie.insert("amore");
 		trie.insert("abort");
+		trie.insert("sk");
+		trie.insert("sqlite");
+		trie.insert("skull");
 
-		Assert.assertEquals(trie.getNumChildren(), 4);
-		Assert.assertEquals(trie.getChildren().get(0).getNumChildren(), 2);
+		Assert.assertEquals(trie.getNumChildren(), 5);
+		Assert.assertEquals(trie.getChildren().get(0).getNumChildren(), 3);
 		Assert.assertEquals(trie.getChildren().get(1).getNumChildren(), 1);
 		Assert.assertEquals(trie.getChildren().get(2).getNumChildren(), 1);
 		Assert.assertEquals(trie.getChildren().get(3).getNumChildren(), 2);
+	}
+
+	@Test
+	public void testFindMatchingWordsInTree() {
+		createTestTrie();
+		AbstractSearchTrieNode n = trie.find("californ");
+
+		Assert.assertEquals(n.value, "californ");
+		Assert.assertEquals(n.getNumChildren(), 1);
+	}
+
+	@Test
+	public void testFindNoMatchingWordsInTree() {
+		createTestTrie();
+		//AbstractSearchTrieNode n = trie.find("Lol");
+		trie.find("c");
+		//Assert.assertEquals(n, null);
 	}
 
 

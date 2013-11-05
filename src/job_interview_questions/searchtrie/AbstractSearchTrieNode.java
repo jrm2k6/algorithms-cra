@@ -17,7 +17,7 @@ public abstract class AbstractSearchTrieNode {
 
 	abstract public void print();
 	abstract public void insert(String word);
-	abstract public void find(String word);
+	abstract public AbstractSearchTrieNode find(String word);
 	abstract public void remove(String word);
 
 	public boolean hasChildren() { return children.size() > 0; }

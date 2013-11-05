@@ -1,5 +1,6 @@
 package searchtrie;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -46,8 +47,13 @@ public class RootSearchTrieNode extends AbstractSearchTrieNode {
 	}
 
 	@Override
-	public void find(String word) {
-
+	public AbstractSearchTrieNode find(String word) {
+		for (AbstractSearchTrieNode n : children) {
+			if (n.value.charAt(0) == word.charAt(0)) {
+				return n.find(word);
+			}
+		}
+		return null;
 	}
 
 	@Override
