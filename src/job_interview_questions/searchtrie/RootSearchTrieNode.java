@@ -1,8 +1,6 @@
 package searchtrie;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class RootSearchTrieNode extends AbstractSearchTrieNode {
 	public RootSearchTrieNode() {
@@ -54,11 +52,6 @@ public class RootSearchTrieNode extends AbstractSearchTrieNode {
 			}
 		}
 		return null;
-	}
-
-	@Override
-	public void remove(String word) {
-
 	}
 
 	public void addToChildren(SearchTrieNode node) {

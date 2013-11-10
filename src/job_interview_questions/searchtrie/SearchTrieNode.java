@@ -10,6 +10,7 @@ public class SearchTrieNode extends AbstractSearchTrieNode {
 	@Override
 	public void insert(String word) {
 		if (value.equals(word)) {
+			this.isWord = true;
 			return;
 		}
 
@@ -65,10 +66,5 @@ public class SearchTrieNode extends AbstractSearchTrieNode {
 			System.out.println(n.value);
 			n.print();
 		}
-	}
-
-	@Override
-	public void remove(String word) {
-
 	}
 }

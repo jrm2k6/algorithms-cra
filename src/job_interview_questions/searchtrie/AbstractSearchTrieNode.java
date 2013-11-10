@@ -8,6 +8,7 @@ public abstract class AbstractSearchTrieNode {
 	public String value;
 	public List<AbstractSearchTrieNode> children;
 	public int depth;
+	public Boolean isWord = false;
 
 	AbstractSearchTrieNode(String _value, int _depth) {
 		this.value = _value;
@@ -18,7 +19,6 @@ public abstract class AbstractSearchTrieNode {
 	abstract public void print();
 	abstract public void insert(String word);
 	abstract public AbstractSearchTrieNode find(String word);
-	abstract public void remove(String word);
 
 	public boolean hasChildren() { return children.size() > 0; }
 	public int getNumChildren() { return children.size(); }
